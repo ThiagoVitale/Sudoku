@@ -1,41 +1,60 @@
-# Sudoku Game in C
+# Sudoku en C
 
-## Overview
-This is a terminal-based Sudoku game implemented in C. The game generates a valid Sudoku puzzle based on a user-selected difficulty level, allows players to fill in the board, and provides visual feedback for invalid moves and game progress. The program ensures that puzzles have a unique solution and supports multiple difficulty levels with varying solving techniques.
+Este es un proyecto de Sudoku implementado en lenguaje C, que permite al usuario jugar al clásico rompecabezas de 9x9 con diferentes niveles de dificultad, detección de errores en tiempo real y una interfaz visual en la terminal.
 
-## Features
-- **Dynamic Puzzle Generation**: Generates valid Sudoku puzzles with a unique solution for five difficulty levels: Easy, Medium, Hard, Advanced, and Expert.
-- **Difficulty-Based Techniques**:
-  - Easy: Solvable with Naked Singles and at least one 3x3 subgrid with a single empty cell.
-  - Medium: Solvable with Naked Singles and Hidden Singles.
-  - Hard/Advanced/Expert: Requires advanced techniques like Locked Candidates, ensuring puzzles aren’t solvable with simpler methods.
-- **Visual Interface Enhancements**:
-  - **Color-Coded Subgrids**: Alternating white and gray backgrounds for 3x3 subgrids to enhance readability.
-  - **Fixed Cell Highlighting**: Fixed cells (initial and user-locked numbers) are displayed in bold blue.
-  - **Error Feedback**: Invalid moves highlight the conflicting row, column, or subgrid in red for one turn.
-  - **Fancy Borders**: Uses Unicode characters (e.g., ═, ║, ╬) for a polished grid, with an ASCII fallback for compatibility.
-  - **Progress Indicator**: Displays the percentage of filled cells above the board.
-- **Error Tracking**: Counts and displays the number of invalid moves made by the player.
-- **Input Validation**: Ensures user inputs are valid (e.g., numbers 1-9, no modification of fixed cells).
-- **Terminal Compatibility**: Colors and Unicode characters are disabled if the output isn’t a terminal (e.g., redirected to a file).
+## Características
 
-## Files
-- `sudoku.c`: Main game loop, user input handling, and puzzle initialization.
-- `sudoku.h`: Header file with global variables, structures, and function declarations.
-- `generator.c`: Functions for generating a full board and removing numbers based on difficulty.
-- `solver.c`: Functions for solving puzzles and checking solvability with specific techniques.
-- `display.c`: Functions for printing the board with visual enhancements.
-- `README.md`: This file.
+- Generación de tableros completos y únicos aleatoriamente.
+- Eliminación de casillas en base a la dificultad elegida.
+- Validación en tiempo real de movimientos del usuario.
+- Detección de conflictos por fila, columna o subcuadro.
+- Coloreado en la terminal (compatible con ANSI/UTF-8).
+- Mecanismo de resolución con técnicas lógicas (`naked singles`, `hidden singles`, `locked candidates`).
 
-## Requirements
-- A C compiler (e.g., `gcc`).
-- A terminal that supports ANSI escape codes for colors and Unicode characters for borders (e.g., Linux/macOS terminals, Windows Terminal). For terminals with limited support, set `USE_UNICODE` to `0` in `display.c` for ASCII borders.
+## Estructura del proyecto
 
-## Compilation
-To compile the program, navigate to the project directory and run:
+- `sudoku.c`: Controla el flujo principal del juego, gestiona la interacción con el usuario y la lógica de verificación de movimientos.
+- `sudoku.h`: Contiene constantes, estructuras de datos y declaraciones de funciones.
+- `generator.c`: Se encarga de generar un tablero completo válido y luego vaciar celdas según la dificultad seleccionada.
+- `solver.c`: Contiene algoritmos para contar soluciones y resolver tableros usando técnicas de Sudoku.
+- `display.c`: Se encarga de imprimir el tablero en la terminal de forma visualmente amigable y coloreada.
+
+## Compilación
+
+Usá `gcc` para compilar todos los archivos:
 
 ```bash
-gcc -o sudoku sudoku.c generator.c solver.c display.c
+gcc sudoku.c generator.c solver.c display.c -o sudoku
 ```
 
-Ensure all source files (`sudoku.c`, `
+## Ejecución
+
+```bash
+./sudoku
+```
+
+## Niveles de dificultad
+
+Al iniciar el juego, se te pedirá que selecciones un nivel de dificultad del 1 al 5:
+
+1. Fácil
+2. Medio
+3. Difícil
+4. Avanzado
+5. Experto
+
+Cuanto más alto el nivel, más celdas vacías y más complejas las técnicas necesarias para resolverlo.
+
+## Controles del juego
+
+- Se te pedirá que ingreses: **fila columna valor**, por ejemplo: `3 4 7`
+- Si el movimiento es inválido (por reglas del Sudoku o genera múltiples soluciones), se marcará el error y se mostrará en rojo.
+- El juego termina cuando el tablero se completa correctamente.
+
+## Dependencias
+
+Este programa usa solamente la biblioteca estándar de C (`stdio.h`, `stdlib.h`, `stdbool.h`, `time.h`, `unistd.h`), por lo que no requiere instalación de paquetes adicionales.
+
+---
+
+Desarrollado como ejercicio de programación estructurada y algoritmos lógicos en C.
