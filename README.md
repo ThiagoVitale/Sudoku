@@ -4,18 +4,18 @@ Este es un proyecto de Sudoku implementado en lenguaje C, que permite al usuario
 
 ## Características
 
-- Generación de tableros completos y únicos aleatoriamente.
-- Eliminación de casillas en base a la dificultad elegida.
+- Generación de tableros completos y únicos aleatoriamente con simetría rotacional de 180 grados.
+- Eliminación inteligente de casillas en base a la dificultad elegida.
 - Validación en tiempo real de movimientos del usuario.
-- Detección de conflictos por fila, columna o subcuadro.
+- Detección de conflictos por fila, columna o subcasilla.
 - Coloreado en la terminal (compatible con ANSI/UTF-8).
-- Mecanismo de resolución con técnicas lógicas (`naked singles`, `hidden singles`, `locked candidates`).
+- Mecanismo de resolución con varias técnicas lógicas (`naked singles`, `hidden singles`, `locked candidates`, `naked pairs/triples`, `x-wing, swordfish`, `forcing chains, XY-wing`).
 
 ## Estructura del proyecto
 
 - `sudoku.c`: Controla el flujo principal del juego, gestiona la interacción con el usuario y la lógica de verificación de movimientos.
 - `sudoku.h`: Contiene constantes, estructuras de datos y declaraciones de funciones.
-- `generator.c`: Se encarga de generar un tablero completo válido y luego vaciar celdas según la dificultad seleccionada.
+- `generator.c`: Se encarga de generar un tablero completo válido y luego vaciar celdas de manera inteligente según la dificultad seleccionada.
 - `solver.c`: Contiene algoritmos para contar soluciones y resolver tableros usando técnicas de Sudoku.
 - `display.c`: Se encarga de imprimir el tablero en la terminal de forma visualmente amigable y coloreada.
 
@@ -57,4 +57,4 @@ Este programa usa solamente la biblioteca estándar de C (`stdio.h`, `stdlib.h`,
 
 ---
 
-Desarrollado como ejercicio de programación estructurada y algoritmos lógicos en C.
+Desarrollado como ejercicio de práctica para la materia "Algorítmos y estructuras de datos" en lenguaje C.
