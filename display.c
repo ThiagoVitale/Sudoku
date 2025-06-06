@@ -46,7 +46,7 @@ void print_board() {
     float progress = (float)filled_cells / (SIZE * SIZE) * 100;
 
     // Print progress
-    printf("\nProgreso: %.1f%% Errores: %d\n", progress, error_count);
+    printf(messages[selected_language][MSG_PROGRESS_ERRORS], progress, error_count);
 
     // Print column headers
     printf("     ");
