@@ -24,7 +24,7 @@ Este es un proyecto de Sudoku implementado en lenguaje C, que permite al usuario
 Usá `gcc` para compilar todos los archivos:
 
 ```bash
-gcc sudoku.c generator.c solver.c display.c -o sudoku
+gcc -g -fstack-protect -o sudoku sudoku.c generator.c solver.c display.c solutions.c candidates.c advanced_techniques.c utils.c
 ```
 
 ## Ejecución
