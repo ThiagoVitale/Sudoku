@@ -13,11 +13,15 @@ Este es un proyecto de Sudoku implementado en lenguaje C, que permite al usuario
 
 ## Estructura del proyecto
 
-- `sudoku.c`: Controla el flujo principal del juego, gestiona la interacción con el usuario y la lógica de verificación de movimientos.
-- `sudoku.h`: Contiene constantes, estructuras de datos y declaraciones de funciones.
-- `generator.c`: Se encarga de generar un tablero completo válido y luego vaciar celdas de manera inteligente según la dificultad seleccionada.
-- `solver.c`: Contiene algoritmos para contar soluciones y resolver tableros usando técnicas de Sudoku.
-- `display.c`: Se encarga de imprimir el tablero en la terminal de forma visualmente amigable y coloreada.
+- `sudoku.c`: Controla el flujo principal del juego, gestiona la interacción con el usuario y la lógica de selección de idioma.
+- `sudoku.h`: Contiene constantes, estructuras de datos y declaraciones de funciones para el juego de Sudoku.
+- `generator.c`: Genera un tablero completo de Sudoku y elimina celdas según el nivel de dificultad elegido.
+- `solver.c`: Verifica si un tablero es resoluble utilizando técnicas específicas para cada nivel de dificultad.
+- `display.c`: Imprime el tablero en la terminal con mejoras visuales como colores, bordes y resaltado de errores.
+- `solutions.c`: Cuenta el número de soluciones para garantizar que cada puzzle tenga una solución única.
+- `candidates.c`: Administra listas de candidatos para las celdas y aplica técnicas básicas como Naked Singles y Hidden Singles.
+- `advanced_techniques.c`: Implementa técnicas avanzadas de resolución como Locked Candidates, X-Wing y Swordfish.
+- `utils.c`: Proporciona funciones de utilidad, como verificar subcuadrículas con una celda vacía.
 
 ## Compilación
 
