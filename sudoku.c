@@ -121,7 +121,6 @@ void play_sudoku() {
     remove_numbers(empty_cells, difficulty);
 
     while (1) {
-        // Debug: Print empty cell count before printing board
         int empty_count = 0;
         for (int i = 0; i < SIZE; i++)
             for (int j = 0; j < SIZE; j++)
