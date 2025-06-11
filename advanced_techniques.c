@@ -1,5 +1,5 @@
 #include <stdbool.h>
-#include <stdio.h> // For debugging
+#include <stdio.h> 
 #include "sudoku.h"
 
 bool apply_locked_candidates(int (*current_board)[SIZE], CellCandidates (*candidates)[SIZE]) {
@@ -22,13 +22,12 @@ bool apply_locked_candidates(int (*current_board)[SIZE], CellCandidates (*candid
                         for (int i = 0; i < 3; i++) {
                             int r = box_start_row + i;
                             if (r == row) continue;
-                            for (int j = 0; j < 3; j++) { // Fixed typo: j instead of j)
+                            for (int j = 0; j < 3; j++) { 
                                 int c = box_start_col + j;
                                 if (current_board[r][c] == 0 && candidates[r][c].candidates[num - 1]) {
                                     candidates[r][c].candidates[num - 1] = false;
                                     candidates[r][c].count--;
                                     progress = true;
-                                    printf("Locked candidates: Eliminated %d from (%d,%d)\n", num, r, c); // Debug
                                 }
                             }
                         }
@@ -61,7 +60,6 @@ bool apply_locked_candidates(int (*current_board)[SIZE], CellCandidates (*candid
                                     candidates[r][c].candidates[num - 1] = false;
                                     candidates[r][c].count--;
                                     progress = true;
-                                    printf("Locked candidates: Eliminated %d from (%d,%d)\n", num, r, c); // Debug
                                 }
                             }
                         }
@@ -96,7 +94,6 @@ bool apply_locked_candidates(int (*current_board)[SIZE], CellCandidates (*candid
                                     candidates[row][c].candidates[num - 1] = false;
                                     candidates[row][c].count--;
                                     progress = true;
-                                    printf("Locked candidates: Eliminated %d from (%d,%d)\n", num, row, c); // Debug
                                 }
                             }
                         }
@@ -113,7 +110,6 @@ bool apply_locked_candidates(int (*current_board)[SIZE], CellCandidates (*candid
                                     candidates[r][col].candidates[num - 1] = false;
                                     candidates[r][col].count--;
                                     progress = true;
-                                    printf("Locked candidates: Eliminated %d from (%d,%d)\n", num, r, col); // Debug
                                 }
                             }
                         }
@@ -129,7 +125,6 @@ bool apply_locked_candidates(int (*current_board)[SIZE], CellCandidates (*candid
 }
 
 bool apply_x_wing(int (*current_board)[SIZE], CellCandidates (*candidates)[SIZE]) {
-    printf("Starting apply_x_wing\n"); // Debug
     bool progress = false;
     int max_checks = 1000; // Prevent excessive computation
     int check_count = 0;
@@ -162,19 +157,16 @@ bool apply_x_wing(int (*current_board)[SIZE], CellCandidates (*candidates)[SIZE]
                             candidates[row][col1].candidates[num - 1] = false;
                             candidates[row][col1].count--;
                             progress = true;
-                            printf("X-Wing: Eliminated %d from (%d,%d)\n", num, row, col1); // Debug
                         }
                         if (current_board[row][col2] == 0 && candidates[row][col2].candidates[num - 1]) {
                             candidates[row][col2].candidates[num - 1] = false;
                             candidates[row][col2].count--;
                             progress = true;
-                            printf("X-Wing: Eliminated %d from (%d,%d)\n", num, row, col2); // Debug
                         }
                     }
                 }
                 check_count++;
                 if (check_count >= max_checks) {
-                    printf("X-Wing: Reached max_checks in rows\n"); // Debug
                     return progress;
                 }
             }
@@ -209,19 +201,16 @@ bool apply_x_wing(int (*current_board)[SIZE], CellCandidates (*candidates)[SIZE]
                             candidates[row1][col].candidates[num - 1] = false;
                             candidates[row1][col].count--;
                             progress = true;
-                            printf("X-Wing: Eliminated %d from (%d,%d)\n", num, row1, col); // Debug
                         }
                         if (current_board[row2][col] == 0 && candidates[row2][col].candidates[num - 1]) {
                             candidates[row2][col].candidates[num - 1] = false;
                             candidates[row2][col].count--;
                             progress = true;
-                            printf("X-Wing: Eliminated %d from (%d,%d)\n", num, row2, col); // Debug
                         }
                     }
                 }
                 check_count++;
                 if (check_count >= max_checks) {
-                    printf("X-Wing: Reached max_checks in columns\n"); // Debug
                     return progress;
                 }
             }
@@ -231,12 +220,10 @@ bool apply_x_wing(int (*current_board)[SIZE], CellCandidates (*candidates)[SIZE]
     if (progress) {
         initialize_candidates(current_board, candidates);
     }
-    printf("Finished apply_x_wing, progress=%d\n", progress); // Debug
     return progress;
 }
 
 bool apply_swordfish(int (*current_board)[SIZE], CellCandidates (*candidates)[SIZE]) {
-    printf("Starting apply_swordfish\n"); // Debug
     bool progress = false;
 
     // Check rows
@@ -312,7 +299,6 @@ bool apply_swordfish(int (*current_board)[SIZE], CellCandidates (*candidates)[SI
                                     candidates[row][col].candidates[num - 1] = false;
                                     candidates[row][col].count--;
                                     progress = true;
-                                    printf("Swordfish: Eliminated %d from (%d,%d)\n", num, row, col); // Debug
                                 }
                             }
                         }
@@ -395,7 +381,6 @@ bool apply_swordfish(int (*current_board)[SIZE], CellCandidates (*candidates)[SI
                                     candidates[row][col].candidates[num - 1] = false;
                                     candidates[row][col].count--;
                                     progress = true;
-                                    printf("Swordfish: Eliminated %d from (%d,%d)\n", num, row, col); // Debug
                                 }
                             }
                         }
@@ -408,6 +393,5 @@ bool apply_swordfish(int (*current_board)[SIZE], CellCandidates (*candidates)[SI
     if (progress) {
         initialize_candidates(current_board, candidates);
     }
-    printf("Finished apply_swordfish, progress=%d\n", progress); // Debug
     return progress;
 }
