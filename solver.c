@@ -1,5 +1,5 @@
 #include <stdbool.h>
-#include <stdio.h> // For debugging
+#include <stdio.h> 
 #include "sudoku.h"
 
 bool can_solve_with_techniques(int (*current_board)[SIZE], int difficulty) {
@@ -34,7 +34,7 @@ bool can_solve_with_techniques(int (*current_board)[SIZE], int difficulty) {
         return solved;
     }
 
-    bool used_hidden_singles = false; // Changed from requires_hidden_singles
+    bool used_hidden_singles = false; 
     if (!solved) {
         iteration_count = 0;
         do {
@@ -58,10 +58,10 @@ bool can_solve_with_techniques(int (*current_board)[SIZE], int difficulty) {
                 }
     }
     if (difficulty == 2) {
-        return solved; // Removed requires_hidden_singles condition
+        return solved; 
     }
 
-    bool used_locked_candidates = false; // Changed from requires_locked_candidates
+    bool used_locked_candidates = false; 
     if (!solved) {
         iteration_count = 0;
         do {
@@ -90,10 +90,10 @@ bool can_solve_with_techniques(int (*current_board)[SIZE], int difficulty) {
                 }
     }
     if (difficulty == 3) {
-        return solved; // Removed requires_locked_candidates condition
+        return solved; 
     }
 
-    bool used_x_wing = false; // Changed from requires_x_wing
+    bool used_x_wing = false; 
     if (!solved) {
         iteration_count = 0;
 
@@ -132,7 +132,7 @@ bool can_solve_with_techniques(int (*current_board)[SIZE], int difficulty) {
     }
     if (difficulty == 4) {
 
-        return solved; // Removed requires_x_wing condition
+        return solved; 
     }
 
     bool used_swordfish = false;
