@@ -1,6 +1,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
-#include <stdio.h> // For debugging
+#include <stdio.h> 
 #include "sudoku.h"
 
 void remove_numbers_easy(int target_empty_cells);
@@ -524,8 +524,8 @@ void remove_numbers_advanced(int target_empty_cells) {
     initialize_positions(possible_positions, &pos_index);
 
     int pairs_removed = 0;
-    const int max_attempts = 300; // Increased from 200
-    const int max_resets = 7; // Increased from 5
+    const int max_attempts = 300;
+    const int max_resets = 7; 
     int attempts = 0;
     int reset_count = 0;
     int pos_reset_count = 0;
